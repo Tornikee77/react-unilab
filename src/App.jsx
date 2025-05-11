@@ -8,7 +8,18 @@ const App = () => {
   });
   if (isLoading) return <p>loading...</p>;
   if (error) return <p>Error!</p>;
-  return <div>{data.map((eachElement) => eachElement.name)}</div>;
+  return (
+    <div>
+      {data
+        .filter((filterData) => filterData.id <= 1)
+        .map((eachElement) => (
+          <div key={eachElement.id}>
+            <p>{eachElement.name}</p>
+            <p>{eachElement.username}</p>
+          </div>
+        ))}
+    </div>
+  );
 };
 
 export default App;
